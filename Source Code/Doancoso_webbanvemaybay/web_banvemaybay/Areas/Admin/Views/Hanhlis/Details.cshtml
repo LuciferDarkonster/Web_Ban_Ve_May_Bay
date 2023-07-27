@@ -1,0 +1,27 @@
+﻿@model web_banvemaybay.Models.Hanhli
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+
+
+<div class="p15">
+    <h2>Chi tiết</h2><br />
+    <h4>Hành lí</h4>
+    <hr />
+    <dl class="dl-horizontal p15">
+        <dt>
+            Kg : @Html.DisplayFor(model => model.Kg)
+        </dt>
+        <dt>
+            Giá tiền : @String.Format("{0:0,0}", int.Parse(@Html.DisplayFor(model => model.Giatien).ToString()))đ
+        </dt>
+    </dl>
+    <p class="p15">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.IDhanhli }) |
+        @Html.ActionLink("Quay lại", "Index")
+    </p>
+</div>
+

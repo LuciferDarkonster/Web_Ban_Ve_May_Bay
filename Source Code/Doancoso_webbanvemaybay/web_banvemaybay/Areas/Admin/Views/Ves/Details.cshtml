@@ -1,0 +1,48 @@
+﻿@model web_banvemaybay.Models.Ve
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+
+
+<div class="p15">
+    <h2>Chi tiết</h2><br />
+    <h4>Vé</h4>
+    <hr />
+    <dl class="dl-horizontal p15">
+        <dt>
+            Id vé : @Html.DisplayFor(model => model.IDve)
+        </dt>
+        <dt>
+            Tên hành khách : @Html.DisplayFor(model => model.Hanhkhach.Tenhanhkhach)
+        </dt>
+        <dt>
+            Ngày đặt vé : @Html.DisplayFor(model => model.Ngaydatve)
+        </dt>
+        <dt>
+            Địa điểm đi : @Html.DisplayFor(model => model.Chuyenbay.Diadiemdi)
+        </dt>
+        <dt>
+            Địa điểm đến : @Html.DisplayFor(model => model.Chuyenbay.Diadiemden)
+        </dt>
+        <dt>
+            Hành lí : @Html.DisplayFor(model => model.Hanhli.Kg)
+        </dt>
+        <dt>
+            Giá tiền : @String.Format("{0:0,0}", int.Parse(@Html.DisplayFor(model => model.Gia).ToString()))đ
+        </dt>
+        <dt>
+            Thông tin liên hệ : @Html.DisplayFor(model => model.TTlienhe.Phone)
+        </dt>
+        <dt>
+            Tình trạng : @Html.DisplayFor(model => model.Tinhtrang)
+        </dt>
+    </dl>
+    <p class="p15">
+        @*@Html.ActionLink("Sửa", "Edit", new { id = Model.IDve }) |*@
+        @Html.ActionLink("Quay lại", "Index")
+    </p>
+</div>
+

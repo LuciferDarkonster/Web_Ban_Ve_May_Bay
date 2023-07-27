@@ -1,0 +1,357 @@
+﻿@model web_banvemaybay.Models.Chuyenbay
+@{
+    ViewBag.Title = "NhapThongTin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}   
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage) || ViewBag.thongbao != null)
+{
+    <div id="thongbao">
+        <div class="thongbao">
+            <div class="thongbao-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="thongbao-body">
+                <p>Thông báo</p>
+                <p class="ndtb"> @ViewBag.ErrorMessage @ViewBag.thongbao</p>
+            </div>
+            <div class="thongbao-close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div id="thongbao" style="display:none !important">
+        <div class="thongbao">
+            <div class="thongbao-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="thongbao-body">
+                <p>Thông báo</p>
+                <p class="ndtb"></p>
+
+            </div>
+            <div class="thongbao-close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+    </div>
+}
+<form action="@Url.Action("tt","Flight", new { id = "myForm" })" method="post">
+    <!-- Nội dung form tại đây -->
+
+    <div class="information">
+        <div class="information-left">
+            <div class="customer-info">
+                <div class="customer-info-heading">
+                    <i class="fa-solid fa-users"></i>
+                    Thông tin khách hàng
+                </div>
+                <div class="customer-info-body">
+                    <ul class="customer-i">
+                        <li class="li-50">
+                            <p>Chọn hạng vé<sup>*</sup></p>
+                            <select name="hangveid" id="hangveid" class="ci-baggage" required >
+                                <option value="0"> -- Chọn hạng vé -- </option>
+                                <option value="1">Hạng thương gia</option>
+                                <option value="2">Hạng phổ thông</option>
+                            </select>
+                        </li>
+                        <li class="li-50">
+                            <p>Hành lý ký gửi <sup>*</sup></p>
+                            <select name="hanhlyid" id="hanhlyid" class="ci-baggage">
+                                <option value="0"> -- Chọn hạng mức hành lý -- </option>
+                                <option value="1">none</option>
+                                <option value="2">10kg</option>
+                                <option value="3">20kg</option>
+                                <option value="4">30kg</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>Giới tính <sup>*</sup></p>
+                            <select name="gioitinh" id="gioitinh" class="ci-gender">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nử</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>Họ tên <sup>*</sup></p>
+                            <input type="text" name="name" placeholder="Nhập họ tên" required class="form-control">
+                        </li>
+                        <li>
+                            <p>Ngày sinh <sup>*</sup></p>
+                            <input type="date" name="birthday" id="birthday" required>
+                        </li>
+                        <li>
+                            <div>
+                                @{
+                                    web_banvemaybay.Models.web_banvemaybayEntities db = new web_banvemaybay.Models.web_banvemaybayEntities();
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="note">
+                        <h3><i class="fa-solid fa-triangle-exclamation"></i>Lưu ý về độ tuổi người lớn, trẻ em, trẻ sơ sinh</h3>
+                        <p><i class="fa-regular fa-hand-point-right"></i>Người lớn từ 12 tuổi trở lên.</p>
+                        <p><i class="fa-regular fa-hand-point-right"></i>Nếu trẻ em và em bé của bạn không sinh vào khoảng thời gian trên, vui lòng chọn ngày bay khác.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-info-heading">
+                    <i class="fa-solid fa-inbox"></i>
+                    Thông tin liên hệ
+                </div>
+                <div class="contact-info-body">
+                    <ul class="contact-i">
+                        <li>
+                            <p>Quý danh <sup>*</sup></p>
+                            <select name="gioitinhlh" id="gioitinhlh" class="ci-gender">
+                                <option value="1">Quý Ông</option>
+                                <option value="2">Quý Bà</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>Họ tên <sup>*</sup></p>
+                            <input type="text" name="namelh" placeholder="Họ tên" required class="form-control">
+                        </li>
+                        <li>
+                            <p>Điện thoại<sup>*</sup></p>
+                            <input type="text" name="sdtlh" placeholder="Điện thoại" required class="form-control">
+                        </li>
+                        <li>
+                            <p>Email <sup>*</sup></p>
+                            <input type="email" name="emaillh" placeholder="Email" required class="form-control">
+                        </li>
+                    </ul>
+                    @*       <div class="invoice">
+                            <div class="invoice-on">
+                                <label for="invoice"><input type="checkbox" name="invoice" id="invoice">Tôi muốn xuất hóa đơn</label>
+                            </div>
+                            <div class="invoice-in">
+                                <ul class="invoice-i">
+                                    <li>
+                                        <p>Tên công ty <sup>*</sup></p>
+                                        <input type="text" placeholder="Tên công ty" required class="form-control">
+                                    </li>
+                                    <li>
+                                        <p>Địa chỉ <sup>*</sup></p>
+                                        <input type="text" placeholder="Địa chỉ" required class="form-control">
+                                    </li>
+                                    <li>
+                                        <p>Thành phố <sup>*</sup></p>
+                                        <input type="text" placeholder="Thành phố" required class="form-control">
+                                    </li>
+                                    <li>
+                                        <p>Mã số thuế VAT <sup>*</sup></p>
+                                        <input type="text" placeholder="Mã số thuế VAT" required class="form-control">
+                                    </li>
+                                    <li>
+                                        <p>Người nhận hóa đơn<sup>*</sup></p>
+                                        <input type="text" placeholder="Người nhận hóa đơn" required class="form-control">
+                                    </li>
+                                    <li>
+                                        <p>Email <sup>*</sup></p>
+                                        <input type="email" placeholder="Email" required class="form-control">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <div class="payment">
+                <div class="payment-heading">
+                    <i class="fa-solid fa-money-bill"></i>
+                    Phương thức thanh toán
+                </div>
+                <div class="payment-body">
+                    <ul class="payment-i">
+                        <li>
+                            <input type="radio" name="payment" id="payment2" value="Thanh toán tại công ty" checked>
+                            <label for="payment2">Thanh toán tại công ty</label>
+                        </li>
+                        <div class="payment2" style="display:block">
+                            Địa chỉ: 10/80C XL Hà Nội, Phường Tân Phú, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam
+                        </div>
+                        <li>
+                            <input type="radio" name="payment" id="payment1" value="payment1" @*value="Thanh toán momo"*@>
+                            <label for="payment1">Thanh toán momo</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="payment" id="payment3" value="Thanh toán vnpay">
+                            <label for="payment3">Thanh toán vnpay</label>
+                        </li>
+                    </ul>
+                    <input type="submit" value="Thanh toán" class="btn btn-reservations ttmacdinh" />
+                    <a class="btn btn-reservations ttmomo" href="@Url.Action("PaymentMomo","Flight")">Thanh toán</a>
+                    <a class="btn btn-reservations ttvnpay" href="@Url.Action("PaymentVnpay","Flight")">Thanh toán</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="information-right">
+            <div class="information-r-heading">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Chuyến bay của bạn
+            </div>
+            <div class="information-r-body">
+                <ul class="information-goto">
+                    @if (Model.Ngayve != null)
+                    {
+                        <b>Chuyến bay khứ hồi</b>
+                    }
+                    else
+                    {
+                        <b>Chuyến bay một chiều</b>
+                    }
+                    <li><p>Đi từ <span class="go">@Model.Diadiemdi</span></p><p>Đến <span class="to">@Model.Diadiemden</span></p></li>
+                    <li>
+                        <span class="go">@Model.Ngaydi</span>
+                        @if (Model.Ngayve != null)
+                        {
+                            <span class="to">@Model.Ngayve</span>
+                        }
+                    </li>
+                </ul>
+                <ul class="information-money">
+                    <b>Giá vé tạm tính</b>
+                    <li>Giá vé<span>@String.Format("{0:0,0}", @Model.Giatien)đ</span></li>
+                    <li>Thuế<span>@String.Format("{0:0,0}", (@Model.Giatien / 100 * 10))đ</span></li>
+                    <li>Phí<span>@String.Format("{0:0,0}", 70000)đ</span></li>
+                    <li>Giá hành lý<span>@String.Format("{0:0,0}", @Session["giahanhly"])đ</span></li>
+                    <li>Giá hạng vé<span>@String.Format("{0:0,0}", @Session["giaHangghe"])đ</span></li>
+                    <li class="li-money-last">Tổng tiền<span>@String.Format("{0:0,0}", @Session["giatien" + Model.IDchuyenbay])đ</span></li>
+                    <input type="hidden" name="idChuyenBay" value="@Model.IDchuyenbay" />
+                    <input type="hidden" name="giatien" value="@Session["giatien"+Model.IDchuyenbay]" />
+                    <input type="hidden" name="idcu" value="@Session["idcu"]" />
+                    <input type="hidden" name="idHangve" value="@Session["idHangve"]" />
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</form>
+<li style="display:none">
+    @using (Html.BeginForm("Information", "Flight", FormMethod.Post, new { id = "flightForm" }))
+    {
+        var hanhli = db.Hanhli.ToList();
+
+        <select name="idhanhli" id="searchBySelect">
+            @foreach (var item in hanhli)
+            {
+                <option value="@item.IDhanhli" selected>@item.Kg</option>
+            }
+        </select>
+        <input type="hidden" name="giatien" value="@Session["giatien"+Model.IDchuyenbay]" />
+        <input type="hidden" name="idChuyenBay" value="@Model.IDchuyenbay" />
+        <input type="hidden" name="idcu" value="@Session["idcu"]" />
+        <input type="hidden" name="giatienidcu" value="@Session["giatien" + Model.IDchuyenbay + Session["idhanhli"]]" />
+        @* <input type="hidden" name="idhanhlicu" value="@Session["idhanhli"+Model.IDchuyenbay]" />*@
+    }
+    @using (Html.BeginForm("Sohangve", "Flight", FormMethod.Post, new { id = "Hangve" }))
+    {
+        var hangve = db.Hangve.ToList();
+        <div id="form2">
+            <!-- Nội dung form tại đây -->
+            <select name="idHangve" id="idHangve">
+                @foreach (var item in hangve)
+                {
+                    <option value="@item.IDhangve">@item.TenHangve</option>
+                }
+            </select>
+        </div>
+        <input type="hidden" name="giatien" value="@Session["giatien"+Model.IDchuyenbay]" />
+        <input type="hidden" name="idChuyenBay" value="@Model.IDchuyenbay" />
+        <input type="hidden" name="idHangvecu" value="@Session["idHangvecu"]" />
+        <input type="hidden" name="idHangve" value="@Session["idHangve"]" />
+        <input type="hidden" name="giatien" value="@Session["giatien"+Model.IDchuyenbay]" />
+        @* <input type="hidden" name="idhanhlicu" value="@Session["idhanhli"+Model.IDchuyenbay]" />*@
+    }
+</li>
+
+<script>
+    // Kiểm tra xem có giá trị mặc định trong localStorage không
+    if (!localStorage.getItem('selectedIdHangve')) {
+        // Thiết lập giá trị mặc định là id 2
+        localStorage.setItem('selectedIdHangve', 2);
+    }
+
+    // Thiết lập giá trị đã chọn cho select box từ localStorage
+    document.getElementById('idHangve').value = localStorage.getItem('selectedIdHangve');
+</script>
+<script>
+    const thongBao = document.querySelector('#thongbao')
+    const tbClose = document.querySelector('.thongbao-close')
+    const closeNemble = document.querySelector('.information')
+    closeNemble.addEventListener('click', function () {
+        document.querySelector("#thongbao").style.display = "none"
+    })
+    tbClose.addEventListener('click', function () {
+        document.querySelector("#thongbao").style.display = "none"
+    })
+    thongBao.addEventListener('click', function (event) {
+        event.stopPropagation()
+    })
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElementHanhLyId = document.getElementById('hanhlyid');
+        var selectElement = document.getElementById('searchBySelect');
+        selectElementHanhLyId.addEventListener('change', function () {
+            selectElementHanhLyId.value = this.value;
+            selectElement.value = this.value;
+            localStorage.setItem('selectedOption', this.value);
+            document.getElementById('flightForm').submit();
+        });
+        var selectedOption = localStorage.getItem('selectedOption');
+        if (selectedOption) {
+            selectElement.value = selectedOption;
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElementHangveId = document.getElementById('hangveid');
+        var selectElement2 = document.getElementById('idHangve');
+        selectElementHangveId.addEventListener('change', function () {
+            selectElementHangveId.value = this.value;
+            selectElement2.value = this.value;
+            localStorage.setItem('selectedOption2', this.value);
+            document.getElementById('Hangve').submit();
+        });
+
+        var selectedOption = localStorage.getItem('selectedOption2');
+        if (selectedOption) {
+            selectElement.value = selectedOption;
+        }
+    });
+    //document.getElementById('invoice').onclick = function (e) {
+    //    if (this.checked) {
+    //        document.querySelector(".invoice-in").style.display = "block"
+    //    }
+    //    else {
+    //        document.querySelector(".invoice-in").style.display = "none"
+    //    }
+    //}
+    //document.getElementById('payment1').onclick = function (e) {
+    //    if (this.checked) {
+    //        document.querySelector(".payment2").style.display = "none"
+    //        document.querySelector(".ttmacdinh").style.display = "none"
+    //        document.querySelector(".ttmomo").style.display = "block"
+    //        document.querySelector(".ttvnpay").style.display = "none"
+    //    }
+    //}
+    document.getElementById('payment2').onclick = function (e) {
+        if (this.checked) {
+            document.querySelector(".payment2").style.display = "block"
+            document.querySelector(".ttmacdinh").style.display = "block"
+            document.querySelector(".ttmomo").style.display = "none"
+            document.querySelector(".ttvnpay").style.display = "none"
+        }
+    }
+    document.getElementById('payment3').onclick = function (e) {
+        if (this.checked) {
+            document.querySelector(".payment2").style.display = "none"
+            document.querySelector(".ttmacdinh").style.display = "none"
+            document.querySelector(".ttmomo").style.display = "none"
+            document.querySelector(".ttvnpay").style.display = "block"
+        }
+    }
+</script>

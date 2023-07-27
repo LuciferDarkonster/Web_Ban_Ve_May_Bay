@@ -1,0 +1,34 @@
+﻿@model web_banvemaybay.Models.HangHK
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+
+
+<div class="p15">
+    <h2>Xóa</h2><br />
+    <h4>Hãng hàng không</h4>
+    <hr />
+    <dl class="dl-horizontal p15">
+        <dt>
+            Tên hãng : @Html.DisplayFor(model => model.TenHang)
+        </dt>
+
+        <dt>
+            Hình ảnh :<br /> <img src="@Model.Hinhanh" style="width:20%;height:20%;" />
+        </dt>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color p15">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

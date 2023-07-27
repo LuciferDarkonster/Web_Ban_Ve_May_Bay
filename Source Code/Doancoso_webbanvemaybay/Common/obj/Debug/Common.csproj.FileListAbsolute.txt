@@ -1,0 +1,6 @@
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\bin\Debug\Common.dll
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\bin\Debug\Common.pdb
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\obj\Debug\Common.dll
+D:\DATA\HocTap\LapTrinhWeb\Gib\Doancoso_webbanvemaybay\Common\obj\Debug\Common.pdb

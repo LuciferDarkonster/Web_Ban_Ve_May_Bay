@@ -1,0 +1,96 @@
+﻿@model web_banvemaybay.Models.Ve
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<div>
+    <h4>Vé</h4>
+    <hr />
+    <dl class="dl-horizontal p15">
+        <dt>
+            Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien)
+        </dd>
+
+        <dt>
+            Tình trạng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tinhtrang)
+        </dd>
+
+        <dt>
+            Ngày đặt vé
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydatve)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            Địa điểm đi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chuyenbay.Diadiemdi)
+        </dd>
+
+        <dt>
+            Đặt trước
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dattruoc.Tinhtrang)
+        </dd>
+
+        <dt>
+            Tên hành khách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hanhkhach.Tenhanhkhach)
+        </dd>
+
+        <dt>
+            Hành lí
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hanhli.Kg)
+        </dd>
+
+        <dt>
+            Thông tin liên hệ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TTlienhe.FullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color p15">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>
